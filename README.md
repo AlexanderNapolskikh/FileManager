@@ -13,4 +13,4 @@ _Файловый менеджер. С возможностью переноса
 ![image](https://github.com/reshetovProg/FarManagerSFML/assets/94145533/56cfccb0-1675-494a-b1c8-f7a461101f1b)
 
 - **UML (Class)**
-- ![image](https://github.com/reshetovProg/FarManagerSFML/assets/94145533/a1bbe063-4d10-4093-8cd5-149ac168cd02)
+![image](https://github.com/reshetovProg/FarManagerSFML/assets/94145533/a1bbe063-4d10-4093-8cd5-149ac168cd02)
