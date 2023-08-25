@@ -1,0 +1,4 @@
+﻿  FileManager.cpp
+FileManager.obj : error LNK2019: unresolved external symbol "public: __thiscall ManagerApp::ManagerApp(void)" (??0ManagerApp@@QAE@XZ) referenced in function _main
+FileManager.obj : error LNK2019: unresolved external symbol "public: void __thiscall ManagerApp::run(void)" (?run@ManagerApp@@QAEXXZ) referenced in function _main
+C:\Users\user\Desktop\IT-Step\FileManager\FileManager\FileManager\Debug\FileManager.exe : fatal error LNK1120: 2 unresolved externals
