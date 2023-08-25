@@ -1,2 +1,5 @@
-﻿  NavWindow.cpp
+﻿  FileManager.cpp
+  ManagerApp.cpp
+  NavWindow.cpp
+  Generating Code...
   FileManager.vcxproj -> C:\Users\user\Desktop\IT-Step\FileManager\FileManager\FileManager\Debug\FileManager.exe

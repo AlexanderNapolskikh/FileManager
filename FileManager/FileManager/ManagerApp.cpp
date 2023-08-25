@@ -5,8 +5,8 @@
 
 ManagerApp::ManagerApp() :
 	window(sf::VideoMode(WINDOW_W, WINDOW_H), "(_//- File Manager -//_)"),
-	navLeft(sf::Vector2f(350, WINDOW_H), sf::Vector2f(0, 0), sf::Color::Color(210, 105, 30), sf::Color::White),
-	navRight(sf::Vector2f(350, WINDOW_H), sf::Vector2f(WINDOW_W - 350, 0), sf::Color::Color(210, 105, 30), sf::Color::White)
+	navLeft(sf::Vector2f(SIZE_NAV_W, WINDOW_H), sf::Vector2f(0, 0), sf::Color::Color(210, 105, 30), sf::Color::White),
+	navRight(sf::Vector2f(SIZE_NAV_W, WINDOW_H), sf::Vector2f(WINDOW_W - SIZE_NAV_W, 0), sf::Color::Color(210, 105, 30), sf::Color::White)
 {
 }
 
@@ -29,6 +29,8 @@ void ManagerApp::processEvent()
 		if (event.type == sf::Event::Closed) {
 			window.close();
 		}
+
+		
 	}
 }
 
