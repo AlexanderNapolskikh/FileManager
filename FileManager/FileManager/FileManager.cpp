@@ -4,6 +4,6 @@
 int main()
 {
 
-	// ManagerApp app;
-	// app.run();
+	ManagerApp app;
+	app.run();
 }
