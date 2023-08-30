@@ -23,7 +23,6 @@ Field::Field(sf::Vector2f size, sf::Vector2f position, sf::Color colorBack, sf::
 void Field::render(sf::RenderWindow& window)
 {
 	window.draw(rectangle);
-
 	text.setFont(font);
 	font.loadFromFile("arial.ttf");
 	window.draw(text);

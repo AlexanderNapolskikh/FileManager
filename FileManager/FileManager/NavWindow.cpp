@@ -18,7 +18,7 @@ NavWindow::NavWindow(sf::Vector2f size, sf::Vector2f position, sf::Color colorBa
 	this->inputField.setText("C:\\\\");
 
 	// Add fields
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 6; i++)
 	{
 		addField(Field(sf::Vector2f(350, BUTTON_SIZE), sf::Vector2f(position.x, position.y + (i + 1) * BUTTON_SIZE), sf::Color::Color(95, 158, 160), colorContour, 24));
 		fields[fields.size() - 1].setText("Hello " + std::to_string(i));
@@ -113,9 +113,19 @@ void NavWindow::removeField()
 	{
 		if (fields[i].getActive()) {
 
+			// Удаление
 			fields.erase(fields.begin() + i);
 			break;
 		}
+	}
+
+	std::vector<Field> buf = fields;
+	fields.clear();
+
+	for (int i = 0; i < buf.size(); i++)
+	{
+		addField(Field(sf::Vector2f(350, BUTTON_SIZE), sf::Vector2f(position.x, position.y + (i + 1) * BUTTON_SIZE), sf::Color::Color(95, 158, 160), sf::Color::White, 24));
+		fields[fields.size() - 1].setText(buf[i].getText());
 	}
 }
 

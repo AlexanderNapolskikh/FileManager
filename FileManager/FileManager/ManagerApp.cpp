@@ -110,7 +110,7 @@ void ManagerApp::processEvent()
 
 void ManagerApp::update()
 {
-
+	
 }
 
 void ManagerApp::render()
