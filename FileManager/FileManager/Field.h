@@ -20,7 +20,12 @@ protected:
 	bool active;
 
 public:
+	Field();
+	//Construct
 	Field(sf::Vector2f size, sf::Vector2f position, sf::Color colorBack, sf::Color colorFont, int fontSize);
+	//Construct copy
+	Field(const Field& otherField);
+
 	void render(sf::RenderWindow& window);
 	void setText(std::string str);
 	std::string getText();

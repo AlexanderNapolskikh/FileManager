@@ -1,6 +1,10 @@
 #include "Field.h"
 #include "Config.h"
 
+Field::Field()
+{
+}
+
 Field::Field(sf::Vector2f size, sf::Vector2f position, sf::Color colorBack, sf::Color colorFont, int fontSize) :
 	rectangle(size)
 {
@@ -18,6 +22,19 @@ Field::Field(sf::Vector2f size, sf::Vector2f position, sf::Color colorBack, sf::
 	text.setFillColor(colorFont);
 	text.setCharacterSize(fontSize);
 	text.setPosition(position.x + 10, position.y + BUTTON_SIZE / 2 - fontSize / 2);
+}
+
+Field::Field(const Field& otherField)
+{
+	this->size = otherField.size;
+	this->position = otherField.position;
+	this->colorBack = otherField.colorBack;
+	this->colorFont = otherField.colorFont;
+	this->fontSize = fontSize;
+	this->text = otherField.text;
+	this->font = otherField.font;
+
+	this->rectangle = otherField.rectangle;
 }
 
 void Field::render(sf::RenderWindow& window)

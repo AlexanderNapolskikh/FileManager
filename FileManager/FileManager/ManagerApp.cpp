@@ -41,6 +41,16 @@ void ManagerApp::processEvent()
 			removeField();
 			operation = "";
 		}
+		else if(operation == "M"){
+
+			moveField();
+			operation = "";
+		}
+		else if (operation == "C") {
+
+			copyField();
+			operation = "";
+		}
 
 		if (event.type == sf::Event::MouseButtonPressed) {
 
@@ -135,7 +145,12 @@ void ManagerApp::moveField()
 
 void ManagerApp::copyField()
 {
-
+	if (navLeft.getActField() != nullptr) {
+		navRight.addField(Field{ *navLeft.getActField() });
+	}
+	else if (navRight.getActField() != nullptr) {
+		navLeft.addField(Field{ *navRight.getActField() });
+	}
 }
 
 void ManagerApp::removeField()

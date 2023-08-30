@@ -52,7 +52,6 @@ void NavWindow::processEvent(sf::Event& event, sf::RenderWindow& window)
 		else {
 
 			inputField.setActive(false);
-			activeField = nullptr;
 		}
 
 		int count = 0;
@@ -64,7 +63,6 @@ void NavWindow::processEvent(sf::Event& event, sf::RenderWindow& window)
 			}
 			else {
 				fields[count].setActive(false);
-				activeField = nullptr;
 			}
 			count++;
 		}
@@ -87,7 +85,6 @@ void NavWindow::processEvent(sf::Event& event, sf::RenderWindow& window)
 				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 
 					inputField.setActive(false);
-					activeField = nullptr;
 				}
 				else
 				{

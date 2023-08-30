@@ -1,1 +1,16 @@
-﻿  FileManager.vcxproj -> C:\Users\user\Desktop\IT-Step\FileManager\FileManager\Debug\FileManager.exe
+﻿  Field.cpp
+  NavWindow.cpp
+C:\Users\user\Desktop\IT-Step\FileManager\FileManager\FileManager\NavWindow.cpp(45,68): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\user\Desktop\IT-Step\FileManager\FileManager\FileManager\NavWindow.cpp(45,47): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\user\Desktop\IT-Step\FileManager\FileManager\FileManager\NavWindow.cpp(109,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\user\Desktop\IT-Step\FileManager\FileManager\FileManager\NavWindow.cpp(122,20): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  FileManager.vcxproj -> C:\Users\user\Desktop\IT-Step\FileManager\FileManager\Debug\FileManager.exe
