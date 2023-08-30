@@ -3,7 +3,6 @@
 
 int main()
 {
-
 	ManagerApp app;
 	app.run();
 }

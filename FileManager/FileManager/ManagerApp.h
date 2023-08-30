@@ -1,7 +1,8 @@
 #pragma once
 
-#include "UI.h"
 #include "NavWindow.h"
+#include "Button.h"
+#include<vector>
 
 class ManagerApp
 {
@@ -9,9 +10,16 @@ class ManagerApp
 private:
 
 	sf::RenderWindow window;
-	UI buttons;
+	// Окна навигации
 	NavWindow navLeft;
 	NavWindow navRight;
+	// Кнопки управления
+	Button butMove;
+	Button butCopy;
+	Button butDelt;
+
+	// Oper
+	std::string operation = "";
 
 public:
 	ManagerApp();
@@ -21,7 +29,8 @@ private:
 	void processEvent();
 	void update();
 	void render();
-	void moveElement();
-	void removeElement();
-	void copyElement();
+	void moveField();
+	void copyField();
+	void removeField();
 };
+

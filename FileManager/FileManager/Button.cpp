@@ -1,16 +1,16 @@
 #include "Button.h"
+#include "Config.h"
 
 Button::Button(sf::Vector2f size, sf::Vector2f position, sf::Color colorBack, sf::Color colorFont, int fontSize) :
 	rectangle(size)
 {
 	this->fontSize = fontSize;
-	this->colorFont = colorBack;
+	this->colorFont = colorFont;
+	this->backColor = colorBack;
 	this->position = position;
 
 	rectangle.setFillColor(colorBack);
 	rectangle.setPosition(position);
-	rectangle.setOutlineColor(colorFont);
-	rectangle.setOutlineThickness(3);
 }
 
 void Button::render(sf::RenderWindow& window)
@@ -20,7 +20,8 @@ void Button::render(sf::RenderWindow& window)
 	text.setFont(font);
 	font.loadFromFile("arial.ttf");
 	text.setCharacterSize(fontSize);
-	text.setPosition(position.x + BUTTON_SIZE / 2 - fontSize / 2, position.y + BUTTON_SIZE / 2 - fontSize / 2);
+	text.setFillColor(colorFont);
+	text.setPosition(position.x +  BUTTON_SIZE / 2 - fontSize / 2, position.y + BUTTON_SIZE / 2 - fontSize / 2);
 	window.draw(text);
 }
 

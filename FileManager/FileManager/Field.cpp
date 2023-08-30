@@ -5,18 +5,19 @@ Field::Field(sf::Vector2f size, sf::Vector2f position, sf::Color colorBack, sf::
 	rectangle(size)
 {
 
+	this->active = false;
+
 	this->colorFont = colorFont;
+	this->colorBack = colorBack;
 	this->fontSize = fontSize;
 	this->position = position;
 
 	rectangle.setFillColor(colorBack);
 	rectangle.setPosition(position);
-	rectangle.setOutlineColor(sf::Color::White);
-	rectangle.setOutlineThickness(3);
 
 	text.setFillColor(colorFont);
 	text.setCharacterSize(fontSize);
-	text.setPosition(position.x, position.y + BUTTON_SIZE / 2 - fontSize / 2);
+	text.setPosition(position.x + 10, position.y + BUTTON_SIZE / 2 - fontSize / 2);
 }
 
 void Field::render(sf::RenderWindow& window)
@@ -25,13 +26,18 @@ void Field::render(sf::RenderWindow& window)
 
 	text.setFont(font);
 	font.loadFromFile("arial.ttf");
-
 	window.draw(text);
 }
 
 void Field::setText(std::string str)
 {
 	this->text.setString(str);
+	txt = str;
+}
+
+std::string Field::getText()
+{
+	return txt;
 }
 
 void Field::changeBackColor(sf::Color colorBack)
@@ -58,4 +64,15 @@ sf::Color Field::getFontColor()
 sf::Color Field::getBackColor()
 {
 	return rectangle.getFillColor();
+}
+
+bool Field::getActive()
+{
+	return active;
+}
+
+void Field::setActive(bool status)
+{
+	active = status;
+	(!active) ? rectangle.setFillColor(colorBack) : rectangle.setFillColor(sf::Color::Color(205, 92, 92));
 }

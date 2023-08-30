@@ -1,7 +1,6 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Config.h"
 #include <iostream>
 
 class Button
@@ -12,6 +11,7 @@ private:
 	sf::Font font;
 	int fontSize;
 	sf::Color colorFont;
+	sf::Color backColor;
 	sf::Text text;
 	sf::Vector2f position;
 	sf::Vector2f size;
