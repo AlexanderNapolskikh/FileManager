@@ -120,7 +120,8 @@ void ManagerApp::processEvent()
 
 void ManagerApp::update()
 {
-	
+	navLeft.createFields();
+	navRight.createFields();
 }
 
 void ManagerApp::render()
@@ -147,8 +148,7 @@ void ManagerApp::copyField()
 {
 	if (navLeft.getActField() != nullptr) {
 		navRight.addField(Field{ *navLeft.getActField() });
-	}
-	else if (navRight.getActField() != nullptr) {
+	}else if (navRight.getActField() != nullptr) {
 		navLeft.addField(Field{ *navRight.getActField() });
 	}
 }

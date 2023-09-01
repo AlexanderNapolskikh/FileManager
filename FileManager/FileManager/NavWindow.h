@@ -1,11 +1,11 @@
 #pragma once
 
-#include <vector>
 #include <SFML/Graphics.hpp>
 #include "Config.h"
 #include "Field.h"
 #include "InputField.h"
 #include <iostream>
+#include <vector>
 
 class NavWindow
 {
@@ -26,4 +26,5 @@ public:
 	void render(sf::RenderWindow& window);
 	void processEvent(sf::Event& event, sf::RenderWindow& window);
 	Field* getActField();
+	void createFields();
 };

@@ -1,6 +1,5 @@
 #include "NavWindow.h"
 
-
 NavWindow::NavWindow(sf::Vector2f size, sf::Vector2f position, sf::Color colorBack, sf::Color colorContour) :
 	rectangle(size),
 	inputField(sf::Vector2f(350, BUTTON_SIZE), position, sf::Color::Color(135, 206, 235), colorContour, 24)
@@ -18,11 +17,12 @@ NavWindow::NavWindow(sf::Vector2f size, sf::Vector2f position, sf::Color colorBa
 	this->inputField.setText("C:\\\\");
 
 	// Add fields
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		addField(Field(sf::Vector2f(350, BUTTON_SIZE), sf::Vector2f(position.x, position.y + (i + 1) * BUTTON_SIZE), sf::Color::Color(95, 158, 160), colorContour, 24));
 		fields[fields.size() - 1].setText("Hello " + std::to_string(i));
 	}
+
 }
 
 void NavWindow::render(sf::RenderWindow& window)
@@ -30,7 +30,7 @@ void NavWindow::render(sf::RenderWindow& window)
 	window.draw(rectangle);
 	inputField.render(window);
 
-	for (auto el : fields)
+	for (auto& el : fields)
 	{
 		el.render(window);
 	}
@@ -52,6 +52,7 @@ void NavWindow::processEvent(sf::Event& event, sf::RenderWindow& window)
 		else {
 
 			inputField.setActive(false);
+			activeField = nullptr;
 		}
 
 		int count = 0;
@@ -60,9 +61,11 @@ void NavWindow::processEvent(sf::Event& event, sf::RenderWindow& window)
 			if (i.getRectangle().getGlobalBounds().contains(localPosition)) {
 				fields[count].setActive(true);
 				activeField = &fields[count];
+				break;
 			}
 			else {
 				fields[count].setActive(false);
+				activeField = nullptr;
 			}
 			count++;
 		}
@@ -73,8 +76,6 @@ void NavWindow::processEvent(sf::Event& event, sf::RenderWindow& window)
 	if (inputField.getActive()) {
 
 		if (event.type == sf::Event::TextEntered) {
-			std::cout << " in type!" << std::endl;
-
 
 			if (event.KeyPressed) {
 
@@ -104,6 +105,36 @@ Field* NavWindow::getActField()
 	return activeField;
 }
 
+void NavWindow::createFields()
+{
+
+	if (!inputField.getActive()) {
+
+		// Example
+		std::vector<Field> buf = fields;
+		
+		std::string activeText = "";
+		if (activeField != nullptr) {
+			activeText = activeField->getText();
+		}
+		fields.clear();
+
+
+		for (int i = 0; i < buf.size(); i++)
+		{
+
+			addField(Field(sf::Vector2f(350, BUTTON_SIZE), sf::Vector2f(position.x, position.y + (i + 1) * BUTTON_SIZE), sf::Color::Color(95, 158, 160), sf::Color::White, 24));
+			if (buf[i].getText() == activeText) {
+				fields[fields.size() - 1].setActive(true);
+				activeField = &fields[i];
+			}
+			fields[fields.size() - 1].setText(buf[i].getText());
+		}
+	}
+		
+	
+}
+
 void NavWindow::removeField()
 {
 	for (int i = 0; i < fields.size(); i++)
@@ -121,12 +152,23 @@ void NavWindow::removeField()
 
 	for (int i = 0; i < buf.size(); i++)
 	{
-		addField(Field(sf::Vector2f(350, BUTTON_SIZE), sf::Vector2f(position.x, position.y + (i + 1) * BUTTON_SIZE), sf::Color::Color(95, 158, 160), sf::Color::White, 24));
+		addField(Field(sf::Vector2f(350, BUTTON_SIZE), 
+				sf::Vector2f(position.x, position.y + (i + 1) * BUTTON_SIZE),
+				sf::Color::Color(95, 158, 160), sf::Color::White,
+				24));
 		fields[fields.size() - 1].setText(buf[i].getText());
 	}
+
 }
 
 void NavWindow::addField(Field field)
 {
-	this->fields.push_back(field);
+	for (auto& el : fields) {
+
+		if (field.getText() == el.getText()) {
+			field.setText(field.getText() + " - copy");
+		}
+	}
+
+	fields.push_back(field);
 }

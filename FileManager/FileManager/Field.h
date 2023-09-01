@@ -5,6 +5,7 @@
 class Field
 {
 
+private:
 	sf::RectangleShape rectangle;
 	sf::Font font;
 	int fontSize;
@@ -14,17 +15,13 @@ class Field
 	sf::Vector2f position;
 	sf::Vector2f size;
 
-
 protected:
-	std::string txt;
+	std::string txt = "";
 	bool active;
 
 public:
-	Field();
 	//Construct
 	Field(sf::Vector2f size, sf::Vector2f position, sf::Color colorBack, sf::Color colorFont, int fontSize);
-	//Construct copy
-	Field(const Field& otherField);
 
 	void render(sf::RenderWindow& window);
 	void setText(std::string str);
@@ -34,6 +31,8 @@ public:
 	sf::RectangleShape& getRectangle();
 	sf::Color getFontColor();
 	sf::Color getBackColor();
+	sf::Vector2f getSize();
+	sf::Vector2f getPosition();
 
 	bool getActive();
 	void setActive(bool status);

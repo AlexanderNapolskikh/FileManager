@@ -1,10 +1,6 @@
 #include "Field.h"
 #include "Config.h"
 
-Field::Field()
-{
-}
-
 Field::Field(sf::Vector2f size, sf::Vector2f position, sf::Color colorBack, sf::Color colorFont, int fontSize) :
 	rectangle(size)
 {
@@ -19,29 +15,22 @@ Field::Field(sf::Vector2f size, sf::Vector2f position, sf::Color colorBack, sf::
 	rectangle.setFillColor(colorBack);
 	rectangle.setPosition(position);
 
-	text.setFillColor(colorFont);
+	font.loadFromFile("arial.ttf");
 	text.setCharacterSize(fontSize);
-	text.setPosition(position.x + 10, position.y + BUTTON_SIZE / 2 - fontSize / 2);
-}
+	text.setFont(font);
 
-Field::Field(const Field& otherField)
-{
-	this->size = otherField.size;
-	this->position = otherField.position;
-	this->colorBack = otherField.colorBack;
-	this->colorFont = otherField.colorFont;
-	this->fontSize = fontSize;
-	this->text = otherField.text;
-	this->font = otherField.font;
-
-	this->rectangle = otherField.rectangle;
 }
 
 void Field::render(sf::RenderWindow& window)
 {
 	window.draw(rectangle);
 	text.setFont(font);
+	text.setPosition(position.x + 10, position.y + BUTTON_SIZE / 2 - fontSize / 2);
+
 	font.loadFromFile("arial.ttf");
+	text.setCharacterSize(fontSize);
+	text.setFillColor(colorFont);
+
 	window.draw(text);
 }
 
@@ -80,6 +69,16 @@ sf::Color Field::getFontColor()
 sf::Color Field::getBackColor()
 {
 	return rectangle.getFillColor();
+}
+
+sf::Vector2f Field::getSize()
+{
+	return size;
+}
+
+sf::Vector2f Field::getPosition()
+{
+	return position;
 }
 
 bool Field::getActive()
